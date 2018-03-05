@@ -8,6 +8,11 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 {
     public class HomeController : Controller
     {
+
+        public ActionResult Detaljeret_VP()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();

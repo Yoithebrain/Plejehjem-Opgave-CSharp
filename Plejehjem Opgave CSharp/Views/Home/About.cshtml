@@ -1,7 +1,32 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Notes for todays work:";
 }
+<html>
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+
+<p><h4><b>Make a note for todays work:</b></h4></p>
+<body>
+    <form action="/html/tags/html_form_tag_action.cfm" method="post">
+<textarea name="comments" id="comments" style="width:96%;height:90px;padding:2%;font-size:1.2em;background-color:white;">
+Write your note her!!!!!
+</textarea>
+
+    </form>
+    <form action="/action_page.php" method="get">
+
+        <input type="submit" value="Submit">
+
+        <p align="right"><h4><b>Click the things you have done today:</b></h4></p>
+
+
+        <input type="checkbox" name="nursing home" value="cleaning">Done cleaning<br>
+        <input type="checkbox" name="nursing home" value="cooking" checked> Done cooking for the patient<br>
+        <input type="checkbox" name="nursing home" value="clothes" checked> Wash clothes<br>
+        <input type="checkbox" name="nursing home" value="mail" checked> Help with mailpost<br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

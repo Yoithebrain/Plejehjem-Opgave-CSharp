@@ -9,7 +9,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Detaljeret_VP()
+        public ActionResult Details_VP()
         {
             return View();
         }

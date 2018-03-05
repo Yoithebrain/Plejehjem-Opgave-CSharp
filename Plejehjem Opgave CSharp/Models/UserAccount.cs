@@ -30,7 +30,7 @@ namespace Plejehjem_Opgave_CSharp.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-mm-yyyy}")]
         public DateTime DateOfBirth { get; set; } 
 
-        [Display(Name = "Username is required")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required")]

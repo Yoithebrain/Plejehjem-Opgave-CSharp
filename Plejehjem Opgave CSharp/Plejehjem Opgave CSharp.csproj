@@ -147,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CitizensInformation.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\details_VP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -194,6 +195,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
     <Content Include="Views\Home\details_VP.cshtml" />
+    <Content Include="Views\Home\RutePlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

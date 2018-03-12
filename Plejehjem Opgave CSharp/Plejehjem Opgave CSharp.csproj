@@ -157,6 +157,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CitizensInformation.cs" />
+    <Compile Include="Models\details_VP.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="person.cs">
@@ -279,6 +280,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
+    <Content Include="Views\Home\RutePlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

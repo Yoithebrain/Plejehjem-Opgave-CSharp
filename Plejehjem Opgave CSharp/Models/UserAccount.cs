@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Plejehjem_Opgave_CSharp.Models
 {
+
     public class UserAccount
     {
 
@@ -27,11 +28,12 @@ namespace Plejehjem_Opgave_CSharp.Models
 
         [Display(Name = "Date of birth")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-mm-yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime DateOfBirth { get; set; } 
 
         [Display(Name = "Username")]
-        public string UserName { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Username is required")]
+        public string Username { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]

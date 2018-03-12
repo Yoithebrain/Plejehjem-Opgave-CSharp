@@ -10,20 +10,37 @@ namespace Plejehjem_Opgave_CSharp.Controllers
     public class AccountController : Controller
     {
         // GET: Account
+
         public ActionResult Index()
         {
-            return View();
+            using (MyDbContext db = new MyDbContext())
+            {
+                return View(db.Useraccount.ToList());
+
+            }
+
         }
 
         public ActionResult Register()
         {
             return View();
         }
+       
 
         [HttpPost]
         public ActionResult Register(UserAccount account)
         {
             //make validation
+            if (ModelState.IsValid)
+            {
+                using (MyDbContext db = new MyDbContext())
+                {
+                    db.Useraccount.Add(account);
+                    db.SaveChanges();
+                }
+                ModelState.Clear();
+                ViewBag.Message = account.FirstName + " " + account.LastName + " successfully registered.";
+            }
             return View();
         }
 
@@ -37,7 +54,21 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         public ActionResult Login(UserAccount user)
         {
             // use database to validate
-            return View();
+            using (MyDbContext db = new MyDbContext())
+            {
+                var usr = db.Useraccount.Where(u => u.Username == user.Username && u.Password == user.Password);
+                if(usr != null)
+                {
+                    //Session["UserID"] = usr.UserID.ToString();
+                   // Session["Username"] = usr.Username.ToString();
+                    return RedirectToAction("LoggedIn");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Username or Password is wrong. ");
+                }
+            }
+               return View();
         }
 
 

@@ -1,7 +1,151 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿
+<html>
+<h2>@ViewBag.Title</h2>
 
-<p>Use this area to provide additional information.</p>
+
+<from>
+    <fieldset>
+        <legend>Made today</legend>
+        <div>
+            <input type="checkbox" id="coding" name="interest" value="coding">
+            <label for="coding">Cooking</label>
+        </div>
+        <div>
+            <input type="checkbox" id="music" name="interest" value="music">
+            <label for="music">Cleaning</label>
+        </div>
+        <div>
+            <input type="checkbox" id="art" name="interest" value="art">
+            <label for="art">Bath</label>
+        </div>
+        <div>
+            <input type="checkbox" id="sports" name="interest" value="sports">
+            <label for="sports">Mali cheking</label>
+        </div>
+        <div>
+            <input type="checkbox" id="sports" name="interest" value="sports">
+            <label for="sports">Post cheking</label>
+        </div>
+        <div>
+            <input type="checkbox" id="sports" name="interest" value="sports">
+            <label for="sports">Cleaning clothes</label>
+        </div>
+        <div>
+            <input type="checkbox" id="other" name="interest" value="other">
+            <label for="other">Other</label>
+            <input type="text" id="otherValue" name="other">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </fieldset>
+</from>
+
+<body>
+    <legend>Note for todays work</legend>
+
+    <form action="/html/tags/html_form_tag_action.cfm" method="post">
+<textarea name="comments" id="comments" style="width:96%;height:90px;padding:2%;font-size:1.2em;background-color:white;">
+Write your note her!!!!!
+</textarea>
+
+    </form>
+    <form action="/action_page.php" method="get">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <body>
+        <table border="1" width="100%">
+            <legend>History/previous work</legend>
+            <tr>
+                <td>
+                    <table border="1" width="100%">
+                        <tr>
+                            <th>Besøgte</th>
+                            <th>Tid</th>
+                            <th>Dato</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>Sussan Hansen</td>
+                            <td>12:22-13:40</td>
+                            <td>12 Januar 2011</td>
+                            <td>Done</td>
+                        </tr>
+                        <tr>
+                            <td>Emil Jensen</td>
+                            <td>09:45-10:50</td>
+                            <td>14 Januar 2011</td>
+                            <td>Done</td>
+                        </tr>
+                        <tr>
+                            <td>Emil Olsen</td>
+                            <td>11:23-12:50</td>
+                            <td>16 Janur 2011</td>
+                            <td>Done</td>
+                        </tr>
+                        <tr>
+                            <td>Kenedid Ali</td>
+                            <td>11:23-12:50</td>
+                            <td>20 Januar 2011</td>
+                            <td>Done</td>
+
+                        </tr>
+                        <tr>
+                            <td>Susanne Poulsen</td>
+                            <td>16:10-17.50</td>
+                            <td>24 Januar 2011</td>
+                            <td>Done</td>
+                        </tr>
+
+                        <tr>
+                            <td>Barack Obama</td>
+                            <td>11:40-13:20</td>
+                            <td>2 Febuar 20111</td>
+                            <td>Done</td>
+                        </tr>
+
+                        <tr>
+                            <td>Susanne Poulsen</td>
+                            <td>16:10-17.50</td>
+                            <td>23 Januar 2011</td>
+                            <td>Done</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Susanne Poulsen</td>
+                            <td>16:10-17.50</td>
+                            <td>24 Januar 2011</td>
+                            <td>Done</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Susanne Poulsen</td>
+                            <td>16:10-17.50</td>
+                            <td>25 Januar 2011</td>
+                            <td>Done</td>
+                        </tr>
+
+                        <tr>
+                            <td>Susanne Poulsen</td>
+                            <td>16:10-17.50</td>
+                            <td>26 Januar 2011</td>
+                            <td>Done</td>
+                        </tr>
+
+                        <tr>
+                            <td>Susanne Poulsen</td>
+                            <td>16:10-17.50</td>
+                            <td>27 Januar 2011</td>
+                            <td>Done</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+</body>
+</html>

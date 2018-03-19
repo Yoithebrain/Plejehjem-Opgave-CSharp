@@ -56,19 +56,21 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             // use database to validate
             using (MyDbContext db = new MyDbContext())
             {
-                var usr = db.Useraccount.Where(u => u.Username == user.Username && u.Password == user.Password);
-                if(usr != null)
+                var usr = db.Useraccount.Select(p => p).FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
+
+               
+                if (usr != null)
                 {
-                    //Session["UserID"] = usr.UserID.ToString();
-                   // Session["Username"] = usr.Username.ToString();
-                    return RedirectToAction("LoggedIn");
+                    Session["UserID"] = usr.UserID.ToString();
+                    Session["Username"] = usr.Username.ToString();
+                    return RedirectToAction("LoggedIn","Account");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Username or Password is wrong. ");
                 }
             }
-               return View();
+               return View("LoggedIn");
         }
 
 

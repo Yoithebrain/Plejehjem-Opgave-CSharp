@@ -1,0 +1,110 @@
+﻿
+
+
+@{
+    ViewBag.Title = "RutePlan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>(Information on person logget ind i systemet)</h2>
+
+<div><b>Liste over borgere der skal besøges</b><br /></div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Forventet besøgs tid </th>
+        <th>CPRNumber </th>
+        <th>Borgers navn </th>
+        <th> Adresse </th>
+        <th>Klik for at se mere information</th>
+
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.visitingTime</td>
+            <td>@d.CPRNumber</td>
+            <td>@d.citizensName</td>
+            <td>@d.address</td>
+            <td><button type="submit">Vis detaljer for @d.citizensName</button></td>
+
+        </tr>
+    }
+
+
+
+</table>
+
+<!--Documentation for how to use the google maps API found here: https://developers.google.com/maps/documentation/javascript/-->
+
+<style>
+    /* Controls the size of the map*/
+    #map {
+        height: 600px;
+        width: 700px;
+    }
+</style>
+
+<div id="map"></div>
+<script>
+    var map;
+    function initMap() {
+        //this controls the initial position on the map upon webpage load
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 55.703946, lng: 12.537493 }, //lat is latitude, lng is longtitude. I used https://www.latlong.net/ to find the lat- and longtitude of Lygten 37, Denmark.
+                                                        //This is how we control where our initial position will be on the map upon loading the webpage.
+
+            zoom: 11 //controls how far zoomed in you wanna be on your intial langtitude and longtitude.
+        });
+
+
+
+        //marker variable to set marker depending on a specific position(can be specified in lat, long)
+        //position: William boothsvej 17, Denmark
+        var markerWilliamsvej = new google.maps.Marker({
+            position: { lat: 55.635870, lng: 12.487302 },
+            map: map,
+            label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '11:42' }
+        });
+
+
+
+        //position: Brandstrupvej 4, Denmark
+        var markerBrandstrupvej = new google.maps.Marker({
+            position: { lat: 55.703527, lng: 12.433501 },
+            map: map,
+            label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '10:30' }
+
+        });
+        //position: Lygten 37, Denmark
+        var markerLygten = new google.maps.Marker({
+            position: { lat: 55.703946, lng: 12.537493 },
+            map: map,
+            label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '09:22' }
+        });
+
+        //Following is how you can click on a marker, and show information. All of this is dummy data right now
+        //TODO: Replace med rigtig data fra databasen.
+        var contentStringForLygten37 = '<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h1 id="firstHeading" class="firstHeading">Lygten 37, 2400, København NV</h1>' +
+            '<div id="bodyContent">' +
+            '<p><b>CPR: 165453452</b>, ' +
+            'Her bor borgeren <b>Ole Kristiansen.</b> Han skal besøges i dag <b>klokken 09:22 </b> ';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentStringForLygten37
+        });
+
+        markerLygten.addListener('click', function () {
+            infowindow.open(map, markerLygten);
+        });
+
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMHVWMpD3usPEdKCV2EB4wUY8JuCYxTNc&callback=initMap"
+        async defer></script>
+<!-- note that callback=" initmap. Here initmap refers to the function initMap()."
+
+  This is the original script: https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap the YOUR_API_KEY part is of course replaced with a generated api from developers.google.com/maps-->

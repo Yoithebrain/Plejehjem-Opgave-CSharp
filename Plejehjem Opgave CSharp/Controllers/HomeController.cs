@@ -78,7 +78,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
         }
 
-        public ActionResult Details_VP()
+        public ActionResult details_VP()
         {
             return View();
         }

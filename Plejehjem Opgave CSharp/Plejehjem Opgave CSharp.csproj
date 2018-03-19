@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>PersonModel.tt</DependentUpon>
@@ -157,6 +158,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CitizensInformation.cs" />
+    <Compile Include="Models\details_VP.cs" />
+    <Compile Include="Models\FullCitizensInfo.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="person.cs">
@@ -234,6 +237,7 @@
     <Content Include="PersonModel.edmx.diagram">
       <DependentUpon>PersonModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Home\details_VP.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -280,6 +284,8 @@
     <Content Include="Views\Account\LoggedIn.cshtml" />
     <Content Include="Views\Shared\RutePlan.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\Home\RutePlan.cshtml" />
+    <Content Include="Views\Admin\CreateCitizens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

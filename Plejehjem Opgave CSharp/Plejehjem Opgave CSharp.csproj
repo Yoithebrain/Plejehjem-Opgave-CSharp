@@ -285,6 +285,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <None Include="Views\Home\skema.cshtml" />
+    <None Include="Views\Home\HistorieNotatar.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

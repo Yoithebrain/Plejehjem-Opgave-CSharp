@@ -157,10 +157,30 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803191318447_InitialCreate.cs" />
+    <Compile Include="Migrations\201803191318447_InitialCreate.Designer.cs">
+      <DependentUpon>201803191318447_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803192351026_CreateCitizens.cs" />
+    <Compile Include="Migrations\201803192351026_CreateCitizens.Designer.cs">
+      <DependentUpon>201803192351026_CreateCitizens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803201146373_CreateSc.cs" />
+    <Compile Include="Migrations\201803201146373_CreateSc.Designer.cs">
+      <DependentUpon>201803201146373_CreateSc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803201213314_CreateCitizensContract.cs" />
+    <Compile Include="Migrations\201803201213314_CreateCitizensContract.Designer.cs">
+      <DependentUpon>201803201213314_CreateCitizensContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CitizensChecklist.cs" />
+    <Compile Include="Models\CitizensContacts.cs" />
     <Compile Include="Models\CitizensInformation.cs" />
     <Compile Include="Models\details_VP.cs" />
     <Compile Include="Models\FullCitizensInfo.cs" />
     <Compile Include="Models\MyDbContext.cs" />
+    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="person.cs">
       <DependentUpon>PersonModel.tt</DependentUpon>
@@ -265,7 +285,11 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <None Include="Views\Home\skema.cshtml" />
+    <None Include="Views\Home\HistorieNotatar.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -276,13 +300,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Brugerens dag.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
+    <Content Include="Views\Shared\RutePlan.cshtml" />
+    <Content Include="Views\Account\Logout.cshtml" />
     <Content Include="Views\Home\RutePlan.cshtml" />
     <Content Include="Views\Admin\CreateCitizens.cshtml" />
   </ItemGroup>
@@ -298,6 +324,20 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803191318447_InitialCreate.resx">
+      <DependentUpon>201803191318447_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803192351026_CreateCitizens.resx">
+      <DependentUpon>201803192351026_CreateCitizens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803201146373_CreateSc.resx">
+      <DependentUpon>201803201146373_CreateSc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803201213314_CreateCitizensContract.resx">
+      <DependentUpon>201803201213314_CreateCitizensContract.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

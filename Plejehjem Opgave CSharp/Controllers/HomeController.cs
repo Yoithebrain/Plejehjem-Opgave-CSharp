@@ -45,7 +45,32 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             };
         }
 
-        public ActionResult RutePlan()
+
+        
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        public ActionResult LoggedIn()
+        {
+            if (Session["UserId"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Account/Login");
+        }
+
+            public ActionResult RutePlan()
         {
 
             return View(citizens);

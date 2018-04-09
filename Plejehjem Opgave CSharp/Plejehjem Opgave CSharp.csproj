@@ -212,6 +212,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\details_VP_SS.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -259,6 +260,7 @@
     </Content>
     <Content Include="Scripts\Textgetter.js" />
     <Content Include="Views\Home\details_VP.cshtml" />
+    <None Include="Properties\PublishProfiles\homecaresun - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

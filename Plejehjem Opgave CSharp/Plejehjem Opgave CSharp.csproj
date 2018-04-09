@@ -257,6 +257,7 @@
     <Content Include="PersonModel.edmx.diagram">
       <DependentUpon>PersonModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\Textgetter.js" />
     <Content Include="Views\Home\details_VP.cshtml" />
     <Compile Include="Models\Skema.cs" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

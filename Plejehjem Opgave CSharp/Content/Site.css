@@ -1,8 +1,11 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    color:aqua;
-
+    color: aqua;
+    background-image: url(http://i0.kym-cdn.com/photos/images/original/000/839/199/8a9.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    /*This is why you don't give me permission to do this, I love it.*/
 }
 
 /* Set padding to keep content from hitting the edges */

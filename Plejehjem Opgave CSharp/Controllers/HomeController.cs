@@ -87,7 +87,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult BrugerensDag()
         {
             ViewBag.Message = "Your application description page.";
 

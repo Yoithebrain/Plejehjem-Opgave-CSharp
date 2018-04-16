@@ -94,10 +94,21 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
+        public ActionResult HistorieNotater()
+        {
+            return View();
+        
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Skema()
+        {
             return View();
         }
     }

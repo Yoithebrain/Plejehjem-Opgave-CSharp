@@ -173,12 +173,17 @@
     <Compile Include="Migrations\201803201213314_CreateCitizensContract.Designer.cs">
       <DependentUpon>201803201213314_CreateCitizensContract.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804181233227_GoogleMapInfo.cs" />
+    <Compile Include="Migrations\201804181233227_GoogleMapInfo.Designer.cs">
+      <DependentUpon>201804181233227_GoogleMapInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CitizensChecklist.cs" />
     <Compile Include="Models\CitizensContacts.cs" />
     <Compile Include="Models\CitizensInformation.cs" />
     <Compile Include="Models\details_VP.cs" />
     <Compile Include="Models\FullCitizensInfo.cs" />
+    <Compile Include="Models\GoogleMapsInformation.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\UserAccount.cs" />
@@ -246,6 +251,7 @@
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\OwnScripts\LatAndLong.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -337,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803201213314_CreateCitizensContract.resx">
       <DependentUpon>201803201213314_CreateCitizensContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804181233227_GoogleMapInfo.resx">
+      <DependentUpon>201804181233227_GoogleMapInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

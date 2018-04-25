@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Lamin\source\repos\Plejehjem-Opgave-CSharp\Plejehjem Opgave CSharp\PersonModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\KEA 4 Semester\C#\Projects\HomeCareFinal\Plejehjem-Opgave-CSharp\Plejehjem Opgave CSharp\PersonModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

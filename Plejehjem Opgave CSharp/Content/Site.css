@@ -1,7 +1,6 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    
     /*This is why you don't give me permission to do this, I love it.*/
 }
 
@@ -10,11 +9,13 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+body{
 
-h1 {
-    padding: 100px 40px 30px 30px;
-    color:red;
+    margin:auto;
 }
+
+
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 

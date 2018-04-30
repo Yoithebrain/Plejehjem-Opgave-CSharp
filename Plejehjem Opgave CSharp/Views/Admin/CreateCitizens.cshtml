@@ -4,6 +4,7 @@
     ViewBag.Title = "CreateCitizens";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <h2>CreateCitizens</h2>
 
@@ -11,10 +12,20 @@
 {
     @Html.AntiForgeryToken()
     
+    <form id="submitForm">
     <div class="form-horizontal">
         <h4>FullCitizensInfo</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @if(ViewBag.Message != null)
+        {
+            <div class="form-group">
+                <div class="col-md-10">@ViewBag.Message</div>
+            </div>
+        }
+        
+  
+
         <div class="form-group">
             @Html.LabelFor(model => model.CPRNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -42,8 +53,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control addressClass" }})
                 @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+               
             </div>
         </div>
 
@@ -89,12 +101,157 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+               
+                <input type="submit" value="Create" class="btn btn-default" id="createButton" />
+                
             </div>
         </div>
     </div>
+        </form>
+
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    //initialization of variable
+    var addressValue = "NULL";
+    var formattedAdress = "asdfasdfa";
+    var latitude = 0;
+    var longtitude = 0;
+
+  
+    function geoCode(address, latOrLong) {
+        console.log("FUINCTIN START");
+        var location = address;
+        //http request using axios
+        axios.get('https://maps.googleapis.com/maps/api/geocode/json',
+            {
+                params: {
+                    address: location,
+                    key: 'AIzaSyCj7HEZcGIUWHwc6wb3_ZyJ5fN23VxqW0Q'
+                }
+            }).then(function (response) {
+            ////log full response
+            //console.log(response);
+
+            ////log formatted adress
+            //formattedAdress = response.data.results[0].formatted_address;
+            //console.log(response.data.results[0].formatted_address);
+
+            //// latitude
+            //console.log(response.data.results[0].geometry.location.lat);
+
+            ////longtitude
+            //console.log(response.data.results[0].geometry.location.lng);
+
+                if (latOrLong === "lat") {
+                    latitude = response.data.results[0].geometry.location.lat;
+                    console.log("LAT END");
+
+                    if (longtitude !== 0) {
+                        ajaxCall();
+                    }
+                    return latitude;
+                }
+                else if (latOrLong === "long") {
+                    longtitude = response.data.results[0].geometry.location.lng;
+                    console.log("LOG END");
+
+                    if (latitude !== 0) {
+                        ajaxCall();
+                    }
+                    
+                    return longtitude;
+                } else {
+                    return null;
+                }
+
+        }).catch(function (error) {
+            console.log(error);
+            });
+
+
+    }
+
+    function ajaxCall() {
+        $.ajax({
+            type: "GET",
+            url: "/admin/GetLatLong", //the method we are calling from the controller.
+            contentType: "application/json; charset=utf-8",
+            data: { lng: longtitude, lat: latitude},
+            success: function (result) {
+              
+                console.log("This is the result: " + result);
+                alert(result);
+
+            }
+
+
+        });
+
+        return false;
+    };
+
+    $('form').submit(function () {
+        console.log("Form inside");
+        addressValue = $(".addressClass").val();
+        
+        geoCode(addressValue, "lat");
+        geoCode(addressValue, "long");
+
+        return true;
+    });
+
+
+    //$("#createButton").click(function () {
+    //   //gets the input from the inputbox "address"
+    //   addressValue = $(".addressClass").val();
+        
+    //    geoCode(addressValue, "lat");
+    //   geoCode(addressValue, "long");
+
+    //   //geoCode(addressValue); //min ajax bliver kaldt før geocode??
+
+    //   // setTimeout(ajaxCall, 750);
+     
+
+
+    //});
+
+    //function getCoordinates(form) {
+    //    //gets the input from the inputbox "address"
+    //    console.log("JBIAEJDFIASDKFasdfoansdfoijadsofijasdofijasdoifjaosidjfasdifojasodifjaodfjaodif");
+    //    addressValue = $(".addressClass").val();
+        
+    //    geoCode(addressValue, "lat");
+    //    geoCode(addressValue, "long");
+
+    //    //geoCode(addressValue); //min ajax bliver kaldt før geocode??
+
+    //    setTimeout(ajaxCall, 1000);
+    //    //ajaxCall();
+    //    setTimeout(function() {
+    //            form.submit();
+    //        },
+    //        3000);
+
+    //    return false;
+    //}
+
+    //function waitForm(form) {
+
+    //    document.getElementById("createButton").value = "loading";
+    //    setTimeout(function() {
+    //            form.submit();
+    //        },
+    //        10000);
+
+    //    return false;
+    //}
+
+</script>

@@ -46,30 +46,36 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         }
 
 
-        
-        public ActionResult Register()
-        {
-            return View();
-        }
+        //Disse skal være i AccountController
 
-        public ActionResult LoggedIn()
-        {
-            if (Session["UserId"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult Logout()
-        {
-            Session.Clear();
-            return RedirectToAction("Login", "Account/Login");
-        }
+        //public ActionResult LoggedIn()
+        //{
+        //    if (Session["UserId"] != null)
+        //    {
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
+        //}
 
+        //public ActionResult Logout()
+        //{
+        //    Session.Clear();
+        //    return RedirectToAction("Login", "Account/Login");
+        //}
+
+
+        /// <summary>
+        /// Shows the RutePlan View
+        /// </summary>
+        /// <returns>The view with a list of citizens in the system</returns>
             public ActionResult RutePlan()
         {
 
@@ -78,6 +84,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
         }
 
+        /// <returns> A View with a detailed plan for the individual worker(en vagtplan)</returns>
         public ActionResult details_VP()
         {
             return View();
@@ -87,6 +94,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
+       
+        /// <returns>A view that represents what the citizensen has been through during the day</returns>
         public ActionResult BrugerensDag()
         {
             ViewBag.Message = "Your application description page.";
@@ -94,12 +103,18 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Et fuldt referat over hvem der er blevet besøgt og hvornår.
+        /// </summary>
+        /// <returns>A view for all the citizens who has been visited</returns>
         public ActionResult HistorieNotater()
         {
             return View();
         
         }
 
+
+        /// <returns>A simple contact view</returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -107,6 +122,9 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
+
+   
+        /// <returns>A schedule for the employees</returns>
         public ActionResult Skema()
         {
             return View();

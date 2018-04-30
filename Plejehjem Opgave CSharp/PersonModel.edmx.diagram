@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2765b16fdddd4d96afa7b2297776e057" Name="Diagram1">
-        <EntityTypeShape EntityType="Plejehjem_Opgave_CSharp.Models.MyDbContextModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Plejehjem_Opgave_CSharp.Models.MyDbContextModel.C__MigrationHistory" Width="1.875" PointX="0.625" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Plejehjem_Opgave_CSharp.Models.MyDbContextModel.person" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Plejehjem_Opgave_CSharp.Models.MyDbContextModel.UserAccounts" Width="1.5" PointX="6.125" PointY="0.625" IsExpanded="true" />
       </Diagram>

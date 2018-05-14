@@ -7,5 +7,13 @@ namespace Plejehjem_Opgave_CSharp.Models
 {
     public class Skema
     {
+
+
+
+
+
+
+
+
     }
 }

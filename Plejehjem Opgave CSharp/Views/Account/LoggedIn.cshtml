@@ -6,6 +6,6 @@
 @if (Session["UserId"] != null)
 {
     <h4>Hello @Session["Username"].ToString()</h4>
+    Response.Redirect("../Home/Ruteplan");
 
-    @Html.ActionLink("Logout", "Logout", "Account")
 }

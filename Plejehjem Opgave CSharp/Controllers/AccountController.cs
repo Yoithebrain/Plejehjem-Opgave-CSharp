@@ -11,7 +11,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
     {
         // GET: Account
 
-        public ActionResult Index()
+        public ActionResult Userslist()
         {
             using (MyDbContext db = new MyDbContext())
             {
@@ -91,6 +91,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+       
 
 
     }

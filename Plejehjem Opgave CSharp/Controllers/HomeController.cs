@@ -39,9 +39,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                     citizensName = "Hans Andersen",
                     CPRNumber = "463456345",
                     visitingTime = "12/12-2017 11:42"
-                }
-               
-
+                }             
             };
         }
 
@@ -66,8 +64,6 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                 return View(citizens);
 
             }
-
-
         }
 
         
@@ -76,8 +72,6 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             if (Session["UserID"] == null)
             {//redirect to login if userid is empty
                 return RedirectToAction("../Account/Login");
-
-
             }
             else
             {//returns the view you seek
@@ -117,13 +111,11 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         public ActionResult HistorieNotater()
         {
             if (Session["UserID"] == null)
-            {//redirect to login if userid is empty
+            {
                 return RedirectToAction("../Account/Login");
-
-
             }
             else
-            {//returns the view you seek
+            {
                 return View("historienotater");
             }
         }
@@ -136,20 +128,16 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
             return View();
         }
-
-
-   
+  
         /// <returns>A schedule for the employees</returns>
         public ActionResult Skema()
         {
             if (Session["UserID"] == null)
             {
                 return RedirectToAction("../Account/Login");
-
-
-            }
+           }
             else
-            {//returns the view you seek
+            {
                 return View("skema");
             }
         }

@@ -320,7 +320,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Userslist.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
     <Content Include="Views\Shared\RutePlan.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />

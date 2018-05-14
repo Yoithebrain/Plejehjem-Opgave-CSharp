@@ -75,7 +75,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             }
             else
             {//returns the view you seek
-                return View("brugerensdag");
+                return View();
 
             }
 

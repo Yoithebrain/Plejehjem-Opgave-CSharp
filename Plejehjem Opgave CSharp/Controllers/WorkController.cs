@@ -24,8 +24,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                                          _phonenumber = c.PhoneNumber,
                                          _otherInfo = c.otherInformation
 
-                                     }).ToList();
-                return View("Detaljeret vagtPlan", othercontacts);
+                                     }).ToList<MyContacts>();
+                return View(othercontacts);
             }
             
         }

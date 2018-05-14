@@ -1,7 +1,7 @@
-﻿@model List<Plejehjem_Opgave_CSharp.Models.MyContacts>
+﻿@model IEnumerable<Plejehjem_Opgave_CSharp.Models.MyContacts>
 
 @{
-    ViewBag.Title ="Detaljeret vagtPlan";
+    ViewBag.Title = "Detaljeret vagtPlan";
 }
 
 <head><link rel="stylesheet" type="text/css" href="~/Content/details_VP_SS.css" /><link rel="stylesheet" type="text/css" href="~/Content/Site.css"/></head>
@@ -29,13 +29,16 @@ This is a comment, please wait for CSS and JS and quries to make this more useab
                 <th>e-mail</th>
                 <th>Andre informationer</th>
             </tr>
+            @foreach (var item in Model)
+            {
             <tr>
-                <td>job_Title</td>
-                <td>full_Name</td>
-                <td>phone_nr</td>
-                <td>e-_mail</td>
-                <td>other_Info</td>
-            </tr> 
+                <td>@item._jobtitle</td>
+                <td>@item._fullName</td>
+                <td>@item._phonenumber</td>
+                <td>email (WIP)</td>
+                <td>@item._otherInfo</td>
+            </tr>
+            }
         </table>
     </div>
         <div id="tabel_2">

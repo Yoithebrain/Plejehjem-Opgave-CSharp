@@ -14,5 +14,7 @@ namespace Plejehjem_Opgave_CSharp.Models
         public DbSet<Schedule> Schedules { get; set; }
 
         public DbSet<CitizensContacts> CitizensContacts { get; set; }
+
+        public DbSet<GoogleMapsInformation> GoogleMapsInformations { get; set; }
     }
 }

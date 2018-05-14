@@ -3,10 +3,9 @@
 //Used for pop-ups.
 
 
-function clickHanlder() {
-    newWin();
-}
-function newWin() {
-    var mywindow = window.open("", "_blank", "height = 200, width = 300", false);
-    mywindow.focus;
+
+function newWin(id) {
+    
+    
+    
 }

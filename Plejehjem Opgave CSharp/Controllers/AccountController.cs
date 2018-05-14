@@ -37,6 +37,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                 {
                     db.Useraccount.Add(account);
                     db.SaveChanges();
+                    
                 }
                 ModelState.Clear();
                 ViewBag.Message = account.FirstName + " " + account.LastName + " successfully registered.";
@@ -90,5 +91,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+
     }
 }

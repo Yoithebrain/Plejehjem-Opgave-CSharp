@@ -28,7 +28,7 @@
             <td>@d.address</td>
             <td><button type="submit">Vis detaljer for @d.citizensName</button></td>
         </tr>
-        
+
     }
 
 
@@ -46,13 +46,14 @@
 </style>
 
 <div id="map"></div>
+
 <script>
     var map;
     function initMap() {
         //this controls the initial position on the map upon webpage load
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: 55.703946, lng: 12.537493 }, //lat is latitude, lng is longtitude. I used https://www.latlong.net/ to find the lat- and longtitude of Lygten 37, Denmark.
-                                                        //This is how we control where our initial position will be on the map upon loading the webpage.
+            //This is how we control where our initial position will be on the map upon loading the webpage.
 
             zoom: 11 //controls how far zoomed in you wanna be on your intial langtitude and longtitude.
         });
@@ -102,9 +103,16 @@
         });
 
     }
+
+    
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMHVWMpD3usPEdKCV2EB4wUY8JuCYxTNc&callback=initMap"
         async defer></script>
 <!-- note that callback=" initmap. Here initmap refers to the function initMap()."
 
-  This is the original script: https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap the YOUR_API_KEY part is of course replaced with a generated api from developers.google.com/maps-->
+This is the original script: https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap the YOUR_API_KEY part is of course replaced with a generated api from developers.google.com/maps-->
+
+
+<!--Nedestående er AXIOS script.
+    Vi bruger AXIOS til at lave HTTP request(nemmere med axio end det ville være med simpel javascript)-->

@@ -92,6 +92,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
+       
+        /// <returns>A view that represents what the citizensen has been through during the day</returns>
         public ActionResult BrugerensDag()
         {
             ViewBag.Message = "Your application description page.";
@@ -108,6 +110,10 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             }
         }
 
+        /// <summary>
+        /// Et fuldt referat over hvem der er blevet besøgt og hvornår.
+        /// </summary>
+        /// <returns>A view for all the citizens who has been visited</returns>
         public ActionResult HistorieNotater()
         {
             if (Session["UserID"] == null)
@@ -122,6 +128,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             }
         }
 
+
+        /// <returns>A simple contact view</returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -129,6 +137,9 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
+
+   
+        /// <returns>A schedule for the employees</returns>
         public ActionResult Skema()
         {
             if (Session["UserID"] == null)

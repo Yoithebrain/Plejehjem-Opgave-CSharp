@@ -187,6 +187,7 @@
     <Compile Include="Models\CitizensInformation.cs" />
     <Compile Include="Models\FullCitizensInfo.cs" />
     <Compile Include="Models\GoogleMapsInformation.cs" />
+    <Compile Include="Models\MyContacts.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Schedule.cs" />

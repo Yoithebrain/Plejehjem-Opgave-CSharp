@@ -14,9 +14,20 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         {
             using (MyDbContext Mydb = new MyDbContext())
             {
-                
+                var othercontacts = (from c in Mydb.CitizensContacts
+                                     join f in Mydb.FullCitizensInfos
+                                     on c.citizensRefId equals f.citizensID
+                                     select new MyContacts()
+                                     {
+                                         _jobtitle = c.JobTitle,
+                                         _fullName = c.FirstName + c.LastName,
+                                         _phonenumber = c.PhoneNumber,
+                                         _otherInfo = c.otherInformation
+
+                                     }).ToList();
+                return View("Detaljeret vagtPlan", othercontacts);
             }
-            return View();
+            
         }
 
         // GET: Work/Details/5

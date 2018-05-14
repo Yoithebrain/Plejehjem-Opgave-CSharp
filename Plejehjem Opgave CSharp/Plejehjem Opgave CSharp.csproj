@@ -151,6 +151,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WorkController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>PersonModel.tt</DependentUpon>
     </Compile>
@@ -181,7 +182,6 @@
     <Compile Include="Models\CitizensChecklist.cs" />
     <Compile Include="Models\CitizensContacts.cs" />
     <Compile Include="Models\CitizensInformation.cs" />
-    <Compile Include="Models\details_VP.cs" />
     <Compile Include="Models\FullCitizensInfo.cs" />
     <Compile Include="Models\GoogleMapsInformation.cs" />
     <Compile Include="Models\MyDbContext.cs" />
@@ -323,6 +323,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Work\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,4 +1,4 @@
-﻿@model Plejehjem_Opgave_CSharp.Models.details_VP
+﻿@model Plejehjem_Opgave_CSharp.Models.UserAccount
 
 @{
     ViewBag.Title = "Detaljeret vagtPlan";
@@ -77,16 +77,13 @@ This is a comment, please wait for CSS and JS and quries to make this more useab
                     </tr>
                 </table>
             </div>
-
         </div>
         <hr/>
         <div>
             <textarea rows="10" cols="50" draggable="false" style="resize:none" id="work_box">
 Opgaver fra database
             </textarea>
-            <button type="button" style="position:initial" onclick="">Rediger</button>           
-            
+            <button type="button" style="position:initial" onclick="">Rediger</button>                       
         </div>
    </div> <!-- entire div of the body, this keeps all the elements of the page together, perhaps needs to be changed at some point but for now-->
- <script src="~/Scripts/Textgetter.js"></script>
 </body>

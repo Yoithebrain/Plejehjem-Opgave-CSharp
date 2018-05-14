@@ -44,7 +44,6 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             return View();
         }
 
-
         public ActionResult Login()
         {
             return View();
@@ -66,11 +65,17 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                     return RedirectToAction("LoggedIn","Account");
                 }
                 else
-                {
+                {                 
                     ModelState.AddModelError("", "Username or Password is wrong. ");
                 }
             }
-               return View("LoggedIn");
+               return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Account/Login");
         }
 
 

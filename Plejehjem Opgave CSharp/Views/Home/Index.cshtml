@@ -2,30 +2,68 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    body{
+        background:#e1e0e1;
+    }
+    .index {
+        text-align: center;
+        color: #000000;
+        padding: 30px;
+    }
+    .ctable{
+        padding:10px;
+        background:#fff;
+        margin:auto;
+    }
+    .ctable td{
+        padding:10px;
+    }
+</style>
+
+<h1 class="index">Welcome to Homecare</h1> 
+    
+<div id="banner">
+    <img src="~/images/banner-blue.jpg" width="100%" />
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<table width="1000" align="center" class="ctable">
+    <tr>
+        <td width="50%">
+            <img src="~/images/ELDER-CARE.jpg" width="100%"/>
+
+        </td>
+        <td>
+            <h3>Welcome to Homecare</h3>
+            <p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet, 
+            hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper.</p>
+        </td>
+    </tr>
+
+</table>
+
+<section>
+    <table width="1000" align="center" class="ctable">
+        <tr>
+            <td width="50%">
+                <h3>Here we are!</h3>
+                <iframe src="https://www.google.com/maps/embed?pb" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </td>
+            <td valign="top">
+                <h3>Our Contact Details:</h3>
+                <hr />
+                <strong>Phone :</strong> +45 34728015<br />
+                <strong>Email :</strong> kea@kea.com<br />
+                <strong>Address :</strong> Lygten 37, 2400 kbh nv<br />
+
+
+            </td>
+        </tr>
+
+    </table>
+</section>

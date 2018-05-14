@@ -46,41 +46,46 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         }
 
 
-        
+        [Authorize]
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
-        public ActionResult LoggedIn()
-        {
-            if (Session["UserId"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
-
-        public ActionResult Logout()
-        {
-            Session.Clear();
-            return RedirectToAction("Login", "Account/Login");
-        }
-
+       
+            
             public ActionResult RutePlan()
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("../Account/Login");
+            }
+            else
+            {//returns the view you seek
+                return View(citizens);
 
-            return View(citizens);
+            }
 
 
         }
 
+        
         public ActionResult details_VP()
         {
-            return View();
+            if (Session["UserID"] == null)
+            {//redirect to login if userid is empty
+                return RedirectToAction("../Account/Login");
+
+
+            }
+            else
+            {//returns the view you seek
+                return View("brugerensdag");
+
+            }
+
+           // Session["Username"] = usr.Username.ToString();
         }
         public ActionResult Index()
         {
@@ -91,13 +96,30 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            if (Session["UserID"] == null)
+            {//redirect to login if userid is empty
+                return RedirectToAction("../Account/Login");
+
+
+            }
+            else
+            {//returns the view you seek
+                return View("brugerensdag");
+            }
         }
 
         public ActionResult HistorieNotater()
         {
-            return View();
-        
+            if (Session["UserID"] == null)
+            {//redirect to login if userid is empty
+                return RedirectToAction("../Account/Login");
+
+
+            }
+            else
+            {//returns the view you seek
+                return View("historienotater");
+            }
         }
 
         public ActionResult Contact()
@@ -109,7 +131,16 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
         public ActionResult Skema()
         {
-            return View();
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("../Account/Login");
+
+
+            }
+            else
+            {//returns the view you seek
+                return View("skema");
+            }
         }
     }
 }

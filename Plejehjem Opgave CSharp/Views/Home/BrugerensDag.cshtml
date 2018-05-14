@@ -35,9 +35,20 @@
             <label for="other">Other</label>
             <input type="text" id="otherValue" name="other">
         </div>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
+
+        <button onclick="myFunction()">Submit</button>
+
+        <p id="demo"></p>
+
+        <br />
+
+        <script>
+        function myFunction() {
+            event.preventDefault();
+
+            document.getElementById("demo").innerHTML = "Opgaver gemt";
+        }
+        </script>
     </fieldset>
 </from>
 

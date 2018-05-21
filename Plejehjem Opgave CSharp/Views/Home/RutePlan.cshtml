@@ -1,15 +1,14 @@
 ﻿
 
-
 @{
     ViewBag.Title = "RutePlan";
     Layout = "~/Views/Shared/_LayoutLoggedIn.cshtml";
 }
 
 
-<h2>(Information on person logget ind i systemet)</h2>
+<h2>Dagens ruteplan</h2>
 
-<div><b>Liste over borgere der skal besøges</b><br /></div>
+<div><b>Liste over borgere der skal besøges i dag</b><br /></div>
 <table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>Forventet besøgs tid </th>
@@ -22,7 +21,9 @@
     @foreach (var d in Model)
     {
         <tr>
-            <td>@d.visitingTime</td>
+            
+            
+            <td>@d.dateToday <b> kl.  @d.vistingTimesToday </b></td>
             <td>@d.CPRNumber</td>
             <td>@d.citizensName</td>
             <td>@d.address</td>
@@ -30,6 +31,8 @@
         </tr>
 
     }
+    
+  
 
 
 
@@ -38,8 +41,8 @@
 <!--Documentation for how to use the google maps API found here: https://developers.google.com/maps/documentation/javascript/-->
 
 <style>
-    /* Controls the size of the map*/
-    #map {
+        /* Controls the size of the map*/
+#map {
         height: 600px;
         width: 700px;
     }
@@ -48,8 +51,20 @@
 <div id="map"></div>
 
 <script>
+
+
+    window.onload = function() {
+        $.get("@Url.Action("GetAllLocations", "Home")",
+            function(data, status) {
+
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i].address);
+                }
+                console.log(data);
+            });
+    }
     var map;
-    function initMap() {
+function initMap() {
         //this controls the initial position on the map upon webpage load
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: 55.703946, lng: 12.537493 }, //lat is latitude, lng is longtitude. I used https://www.latlong.net/ to find the lat- and longtitude of Lygten 37, Denmark.
@@ -59,52 +74,82 @@
         });
 
 
-
-        //marker variable to set marker depending on a specific position(can be specified in lat, long)
-        //position: William boothsvej 17, Denmark
-        var markerWilliamsvej = new google.maps.Marker({
-            position: { lat: 55.635870, lng: 12.487302 },
-            map: map,
-            label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '11:42' }
-        });
+        $.get("@Url.Action("GetAllLocations", "Home")",
+            function (data, status) {
+               
+               
+                var marker = [];
 
 
+                for (var i = 0; i < data.length; i++) {
+                    marker[i] = new google.maps.Marker({
+                        position: { lat: parseFloat(data[i].latitude), lng: parseFloat(data[i].longtitude) },
+                        map: map,
+                        label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: "" + data[i].vistingTimesToday } // we need a field in the database to see when the citizens needs to visited.
+                    });
 
-        //position: Brandstrupvej 4, Denmark
-        var markerBrandstrupvej = new google.maps.Marker({
-            position: { lat: 55.703527, lng: 12.433501 },
-            map: map,
-            label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '10:30' }
 
-        });
-        //position: Lygten 37, Denmark
-        var markerLygten = new google.maps.Marker({
-            position: { lat: 55.703946, lng: 12.537493 },
-            map: map,
-            label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '09:22' }
-        });
+                    //REMEMBER: LATITUDE AND LONGTITUDE has to start with capital "L" because that's how it is in the database.
+                  
+                    console.log("This is the marker: " + data[i].latitude + data[i].longtitude);
+                    console.log("Her er dataen: " + data[i].vistingTimesToday + data[i].dateToday + data[i].address);
+                }
 
-        //Following is how you can click on a marker, and show information. All of this is dummy data right now
-        //TODO: Replace med rigtig data fra databasen.
-        var contentStringForLygten37 = '<div id="content">' +
-            '<div id="siteNotice">' +
-            '</div>' +
-            '<h1 id="firstHeading" class="firstHeading">Lygten 37, 2400, København NV</h1>' +
-            '<div id="bodyContent">' +
-            '<p><b>CPR: 165453452</b>, ' +
-            'Her bor borgeren <b>Ole Kristiansen.</b> Han skal besøges i dag <b>klokken 09:22 </b> ';
+               
 
-        var infowindow = new google.maps.InfoWindow({
-            content: contentStringForLygten37
-        });
+            });
 
-        markerLygten.addListener('click', function () {
-            infowindow.open(map, markerLygten);
-        });
+
+
+
+
+
+        ////marker variable to set marker depending on a specific position(can be specified in lat, long)
+        ////position: William boothsvej 17, Denmark
+        //var markerWilliamsvej = new google.maps.Marker({
+        //    position: { lat: 55.635870, lng: 12.487302 },
+        //    map: map,
+        //    label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '11:42' }
+        //});
+
+
+
+
+
+        ////position: Brandstrupvej 4, Denmark
+        //var markerBrandstrupvej = new google.maps.Marker({
+        //    position: { lat: 55.703527, lng: 12.433501 },
+        //    map: map,
+        //    label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '10:30' }
+
+        //});
+        ////position: Lygten 37, Denmark
+        //var markerLygten = new google.maps.Marker({
+        //    position: { lat: 55.703946, lng: 12.537493 },
+        //    map: map,
+        //    label: { color: '#000099', fontWeight: 'bold', fontSize: '20px', text: '09:22' }
+        //});
+
+        ////Following is how you can click on a marker, and show information. All of this is dummy data right now
+        ////TODO: Replace med rigtig data fra databasen.
+        //var contentStringForLygten37 = '<div id="content">' +
+        //    '<div id="siteNotice">' +
+        //    '</div>' +
+        //    '<h1 id="firstHeading" class="firstHeading">Lygten 37, 2400, København NV</h1>' +
+        //    '<div id="bodyContent">' +
+        //    '<p><b>CPR: 165453452</b>, ' +
+        //    'Her bor borgeren <b>Ole Kristiansen.</b> Han skal besøges i dag <b>klokken 09:22 </b> ';
+
+        //var infowindow = new google.maps.InfoWindow({
+        //    content: contentStringForLygten37
+        //});
+
+        //markerLygten.addListener('click', function () {
+        //    infowindow.open(map, markerLygten);
+        //});
 
     }
 
-    
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMHVWMpD3usPEdKCV2EB4wUY8JuCYxTNc&callback=initMap"
@@ -112,7 +157,5 @@
 <!-- note that callback=" initmap. Here initmap refers to the function initMap()."
 
 This is the original script: https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap the YOUR_API_KEY part is of course replaced with a generated api from developers.google.com/maps-->
-
-
 <!--Nedestående er AXIOS script.
     Vi bruger AXIOS til at lave HTTP request(nemmere med axio end det ville være med simpel javascript)-->

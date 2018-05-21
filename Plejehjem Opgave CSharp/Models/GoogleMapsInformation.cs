@@ -20,7 +20,7 @@ namespace Plejehjem_Opgave_CSharp.Models
 
         //foreign key to see what citizens this specific contact is related to.
         [ForeignKey("FullCitizensInfo")]
-        public int mapsRefId { get; set; }
+        public int citizensRefId { get; set; }
         public FullCitizensInfo FullCitizensInfo { get; set; }
 
 

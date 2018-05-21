@@ -10,7 +10,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
     public class WorkController : Controller
     {
         // GET: Work
-        public ActionResult Index()
+        public ActionResult details_VP()
         {
             using (MyDbContext Mydb = new MyDbContext())
             {
@@ -24,8 +24,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                                          _phonenumber = c.PhoneNumber,
                                          _otherInfo = c.otherInformation
 
-                                     }).ToList();
-                return View("Detaljeret vagtPlan", othercontacts);
+                                     }).ToList<MyContacts>();
+                return View(othercontacts);
             }
             
         }

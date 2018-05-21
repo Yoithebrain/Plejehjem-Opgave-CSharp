@@ -100,14 +100,26 @@
 
     <form action="/html/tags/html_form_tag_action.cfm" method="post">
 <textarea name="comments" id="comments" style="width:96%;height:90px;padding:2%;font-size:1.2em;background-color:white;">
-Write your note her!!!!!
+
 </textarea>
 
-    </form>
-    <form action="/action_page.php" method="get">
+<body>
 
-        <input type="submit" value="Submit">
-    </form>
+    <button onclick="myFunction()">Submit</button>
+
+    <p id="demo"></p>
+
+
+
+    <script>
+        function myFunction() {
+            event.preventDefault();
+
+            document.getElementById("demo").innerHTML = "Notat gemt";
+        }
+    </script>
+
+</body>
 
 </body>
 </html>

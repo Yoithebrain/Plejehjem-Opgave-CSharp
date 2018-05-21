@@ -181,10 +181,36 @@
     <Compile Include="Migrations\201804181233227_GoogleMapInfo.Designer.cs">
       <DependentUpon>201804181233227_GoogleMapInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151423518_Dropdowns.cs" />
+    <Compile Include="Migrations\201805151423518_Dropdowns.Designer.cs">
+      <DependentUpon>201805151423518_Dropdowns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805151443511_removedMigration.cs" />
+    <Compile Include="Migrations\201805151443511_removedMigration.Designer.cs">
+      <DependentUpon>201805151443511_removedMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805151514351_ListsAdded.cs" />
+    <Compile Include="Migrations\201805151514351_ListsAdded.Designer.cs">
+      <DependentUpon>201805151514351_ListsAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805151524313_deletelists.cs" />
+    <Compile Include="Migrations\201805151524313_deletelists.Designer.cs">
+      <DependentUpon>201805151524313_deletelists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805160918247_changedDateTimeFormatInScheudle.cs" />
+    <Compile Include="Migrations\201805160918247_changedDateTimeFormatInScheudle.Designer.cs">
+      <DependentUpon>201805160918247_changedDateTimeFormatInScheudle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805161335513_renamedForeignKeyGoogleMapsInfo.cs" />
+    <Compile Include="Migrations\201805161335513_renamedForeignKeyGoogleMapsInfo.Designer.cs">
+      <DependentUpon>201805161335513_renamedForeignKeyGoogleMapsInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CitizensChecklist.cs" />
     <Compile Include="Models\CitizensContacts.cs" />
     <Compile Include="Models\CitizensInformation.cs" />
+    <Compile Include="Models\CitizensToBeVisitedToday.cs" />
+    <Compile Include="Models\ClientWork.cs" />
     <Compile Include="Models\FullCitizensInfo.cs" />
     <Compile Include="Models\GoogleMapsInformation.cs" />
     <Compile Include="Models\MyContacts.cs" />
@@ -302,6 +328,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\tablegenerator.js" />
+    <Content Include="Views\Admin\CreateSchedule.cshtml" />
+    <Content Include="Views\Home\RuteplanNotAvailable.cshtml" />
     <None Include="Views\Home\Skema.cshtml" />
     <None Include="Views\Home\HistorieNotater.cshtml" />
     <Content Include="Web.config">
@@ -356,6 +384,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804181233227_GoogleMapInfo.resx">
       <DependentUpon>201804181233227_GoogleMapInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151423518_Dropdowns.resx">
+      <DependentUpon>201805151423518_Dropdowns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151443511_removedMigration.resx">
+      <DependentUpon>201805151443511_removedMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151514351_ListsAdded.resx">
+      <DependentUpon>201805151514351_ListsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151524313_deletelists.resx">
+      <DependentUpon>201805151524313_deletelists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805160918247_changedDateTimeFormatInScheudle.resx">
+      <DependentUpon>201805160918247_changedDateTimeFormatInScheudle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805161335513_renamedForeignKeyGoogleMapsInfo.resx">
+      <DependentUpon>201805161335513_renamedForeignKeyGoogleMapsInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

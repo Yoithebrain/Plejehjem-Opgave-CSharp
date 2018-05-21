@@ -42,7 +42,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                 ModelState.Clear();
                 ViewBag.Message = account.FirstName + " " + account.LastName + " successfully registered.";
             }
-            return View();
+            return RedirectToAction("Login", "Account/Login");
         }
 
         public ActionResult Login()

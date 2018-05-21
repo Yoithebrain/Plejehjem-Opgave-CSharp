@@ -10,7 +10,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
     public class WorkController : Controller
     {
         // GET: Work
-        public ActionResult Index()
+        public ActionResult details_VP()
         {
             using (MyDbContext Mydb = new MyDbContext())
             {

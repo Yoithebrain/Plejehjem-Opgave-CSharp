@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Plejehjem_Opgave_CSharp.Models.MyContacts>
+﻿@model IEnumerable<Plejehjem_Opgave_CSharp.Models.ClientWork>
 
 @{
     ViewBag.Title = "Detaljeret vagtPlan";
@@ -32,11 +32,11 @@ This is a comment, please wait for CSS and JS and quries to make this more useab
             @foreach (var item in Model)
             {
             <tr>
-                <td>@item._jobtitle</td>
-                <td>@item._fullName</td>
-                <td>@item._phonenumber</td>
-                <td>email (WIP)</td>
-                <td>@item._otherInfo</td>
+                <td>@item.contact_Job</td>
+                <td>@item.contact_Name</td>
+                <td>@item.contact_Phone</td>
+                <td>@item.contact_Email</td>
+                <td>@item.contact_OtherInfo</td>
             </tr>
             }
         </table>
@@ -52,14 +52,17 @@ This is a comment, please wait for CSS and JS and quries to make this more useab
                     <th>e-mail</th>
                     <th>Andre informationer</th>
                 </tr>
-                <tr>
-                    <td>dummy</td>
-                    <td>dummy</td>
-                    <td>summy</td>
-                    <td>dummy</td>
-                    <td>dummy</td>
-                    <td>Do I need to write it again?</td>
+                @foreach (var item in Model)
+                {
+                 <tr>
+                    <td>@item.rel_Relationship</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
+                }
             </table>
         </div>
     <div>
@@ -72,12 +75,15 @@ This is a comment, please wait for CSS and JS and quries to make this more useab
                         <th>Fulde navn</th>
                         <th>Kontakt info</th>
                     </tr>
+                   @foreach (var item in Model)
+                   {
                     <tr>
-                        <td>date_Time</td>
-                        <td>job_Titel</td>
-                        <td>full_Name</td>
-                        <td>contact_Info</td>
+                        <td>@item.vis_Date</td>
+                        <td>@item.contact_Job</td>
+                        <td>@item.contact_Name</td>
+                        <td></td>
                     </tr>
+                   }
                 </table>
             </div>
         </div>

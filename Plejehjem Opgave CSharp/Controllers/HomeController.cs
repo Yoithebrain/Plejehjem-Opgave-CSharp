@@ -271,9 +271,27 @@ namespace Plejehjem_Opgave_CSharp.Controllers
             }
             else
             {//returns the view you seek
-                return View();
+                using (MyDbContext Mydb = new MyDbContext())
+                {
+                    var model = (from cc in Mydb.CitizensContacts
+                                 join sche in Mydb.Schedules on cc.citizensRefId equals sche.citizensRefId
+                                 join fci in Mydb.FullCitizensInfos on cc.citizensRefId equals fci.citizensID
+                                 select new ClientWork()
+                                 {
+                                     contact_Job = cc.JobTitle,
+                                     contact_Name = cc.FirstName + cc.LastName,
+                                     contact_Phone = cc.PhoneNumber,
+                                     contact_Email = cc.email,
+                                     contact_OtherInfo = cc.otherInformation,
+                                     rel_Relationship = cc.relationToCitizens,
+                                     vis_Date = sche.visitingTime,
 
+                                 }).ToList<ClientWork>();
+
+                    return View(model);
+                }
             }
+            
 
            // Session["Username"] = usr.Username.ToString();
         }

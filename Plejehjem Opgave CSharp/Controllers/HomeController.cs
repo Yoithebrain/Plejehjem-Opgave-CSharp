@@ -21,10 +21,6 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
 
 
-
-
-
-
           
         }
 
@@ -213,7 +209,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
 
 
-                if (finalList != null)
+                if (finalList != null && finalList.Count > 0)
                 {
                     return View(finalList);
                 }
@@ -247,18 +243,42 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
         public ActionResult details_VP()
         {
-            if (Session["UserID"] == null)
-            {//redirect to login if userid is empty
-                return RedirectToAction("../Account/Login");
-            }
-            else
-            {//returns the view you seek
-                return View();
+            {
+                if (Session["UserID"] == null)
+                {
+                    //redirect to login if userid is empty
+                    return RedirectToAction("../Account/Login");
+                }
+                else
+                {
+                    //returns the view you seek
+                    using (MyDbContext Mydb = new MyDbContext())
+                    {
+                        var model = (from cc in Mydb.CitizensContacts
+                            join sche in Mydb.Schedules on cc.citizensRefId equals sche.citizensRefId
+                            join fci in Mydb.FullCitizensInfos on cc.citizensRefId equals fci.citizensID
+                            select new ClientWork()
+                            {
+                                contact_Job = cc.JobTitle,
+                                contact_Name = cc.FirstName + cc.LastName,
+                                contact_Phone = cc.PhoneNumber,
+                                contact_Email = cc.email,
+                                contact_OtherInfo = cc.otherInformation,
+                                rel_Relationship = cc.relationToCitizens,
+                                vis_Date = sche.visitingTime,
+
+                            }).ToList<ClientWork>();
+
+                        return View(model);
+                    }
+
+                    // Session["Username"] = usr.Username.ToString();
+                }
 
             }
-
-           // Session["Username"] = usr.Username.ToString();
         }
+
+
         public ActionResult Index()
         {
             return View();

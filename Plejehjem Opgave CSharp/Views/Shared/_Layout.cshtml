@@ -8,86 +8,82 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <style>
-        
-        
     </style>
-    
-    
+
+
 </head>
 <body>
-    
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">HomeCare AlbertsLund</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
 
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/brugerensdag">Brugerens dag</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/Ruteplan">Ruteplan</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/details_VP">Vagtplan</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/Skema">Skema</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/HistorieNotater">HistorieNotatar</a>
-            </li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">HomeCare AlbertsLund</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
 
-            @* NOTE: ALL CONTENT BELOW THIS COMMENT IS HOW TO MAKE A DROPDOWN MENU IF NEEDED IN THE NAVBAR
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-            *@
 
-            @* NOTE: THIS IS HOW TO MAKE AN ITEM DISABLED
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>*@
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
+                </li>
 
-        @* NOTE: THIS IS HOW YOU'D CREATE A SEARCH FIELD
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>*@
-        
-        <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
 
-            <li class="nav-item">
-                <a class="nav-link" href="/Account/Login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Account/Register">Register</a>
-            </li>
-        </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Din information
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/Home/Ruteplan">Ruteplan</a>
+                        <a class="dropdown-item" href="/Home/Skema">Skema</a>
+                        <a class="dropdown-item" href="/Home/details_VP">Vagtplan</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Home/HistorieNotater">HistorieNotatar</a>
+                        <a class="dropdown-item" href="/Home/brugerensdag">Brugerens dag</a>
+                    </div>
+                </li>
 
-    </div>
 
-</nav>
-        
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/Admin/CreateSchedule">Opret skema</a>
+                        <a class="dropdown-item" href="/Admin/CreateCitizens">Opret borger</a>
+
+                    </div>
+                </li>
+
+
+                @* NOTE: THIS IS HOW TO MAKE AN ITEM DISABLED
+                        <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>*@
+            </ul>
+
+            @* NOTE: THIS IS HOW YOU'D CREATE A SEARCH FIELD
+                    <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>*@
+
+            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Account/Login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Account/Register">Register</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />

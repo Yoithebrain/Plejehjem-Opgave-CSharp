@@ -8,6 +8,7 @@ using System.Web;
 namespace Plejehjem_Opgave_CSharp.Models
 {
     public class CitizensContacts
+
     {
         [Key]
         public int ContactID { get; set; }

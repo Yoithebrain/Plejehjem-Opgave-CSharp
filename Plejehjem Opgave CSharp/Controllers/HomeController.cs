@@ -18,33 +18,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         public HomeController()
         {
 
-            citizens = new List<CitizensInformation>()
-            {
-                //following is dummy data. 
-                //TODO: This is to be replaced with data from Database
-                new CitizensInformation()
-                {
-                    address = "Lygten 37",
-                    citizensName = "Ole Kristiansen",
-                    CPRNumber = "165453452",
-                    visitingTime = "12/12-2017 09:22"
-                },
-                new CitizensInformation()
-                {
-                    address = "Brandstrupvej 4",
-                    citizensName = "Kurt jensen",
-                    CPRNumber = "2345234513",
-                    visitingTime = "12/12-2017 10:30"
-                },
 
-                new CitizensInformation()
-                {
-                    address = "William boothsvej 17",
-                    citizensName = "Hans Andersen",
-                    CPRNumber = "463456345",
-                    visitingTime = "12/12-2017 11:42"
-                }             
-            };
+
 
           
         }
@@ -96,6 +71,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
                 //gets the date today
                 var currentDate = DateTime.Now.Date;
+               
 
                 //currentUserID contains information about the ID of whom is logged into the system(which user account)
                 int currentUserID = Int32.Parse((string)Session["UserID"]);
@@ -115,6 +91,8 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                       where s.DateForVisiting == currentDate
                                                   
                         select s.visitingTime;
+
+
 
 
                     //gets the ID of the citizen to be visited today
@@ -231,7 +209,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
 
 
-                if (finalList != null)
+                if (finalList != null && finalList.Count > 0)
                 {
                     return View(finalList);
                 }
@@ -265,36 +243,42 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
         public ActionResult details_VP()
         {
-            if (Session["UserID"] == null)
-            {//redirect to login if userid is empty
-                return RedirectToAction("../Account/Login");
-            }
-            else
-            {//returns the view you seek
-                using (MyDbContext Mydb = new MyDbContext())
+            {
+                if (Session["UserID"] == null)
                 {
-                    var model = (from cc in Mydb.CitizensContacts
-                                 join sche in Mydb.Schedules on cc.citizensRefId equals sche.citizensRefId
-                                 join fci in Mydb.FullCitizensInfos on cc.citizensRefId equals fci.citizensID
-                                 select new ClientWork()
-                                 {
-                                     contact_Job = cc.JobTitle,
-                                     contact_Name = cc.FirstName + cc.LastName,
-                                     contact_Phone = cc.PhoneNumber,
-                                     contact_Email = cc.email,
-                                     contact_OtherInfo = cc.otherInformation,
-                                     rel_Relationship = cc.relationToCitizens,
-                                     vis_Date = sche.visitingTime,
-
-                                 }).ToList<ClientWork>();
-
-                    return View(model);
+                    //redirect to login if userid is empty
+                    return RedirectToAction("../Account/Login");
                 }
-            }
-            
+                else
+                {
+                    //returns the view you seek
+                    using (MyDbContext Mydb = new MyDbContext())
+                    {
+                        var model = (from cc in Mydb.CitizensContacts
+                            join sche in Mydb.Schedules on cc.citizensRefId equals sche.citizensRefId
+                            join fci in Mydb.FullCitizensInfos on cc.citizensRefId equals fci.citizensID
+                            select new ClientWork()
+                            {
+                                contact_Job = cc.JobTitle,
+                                contact_Name = cc.FirstName + cc.LastName,
+                                contact_Phone = cc.PhoneNumber,
+                                contact_Email = cc.email,
+                                contact_OtherInfo = cc.otherInformation,
+                                rel_Relationship = cc.relationToCitizens,
+                                vis_Date = sche.visitingTime,
 
-           // Session["Username"] = usr.Username.ToString();
+                            }).ToList<ClientWork>();
+
+                        return View(model);
+                    }
+
+                    // Session["Username"] = usr.Username.ToString();
+                }
+
+            }
         }
+
+
         public ActionResult Index()
         {
             return View();
@@ -352,7 +336,20 @@ namespace Plejehjem_Opgave_CSharp.Controllers
            }
             else
             {
-                return View("skema");
+
+              int currentuserID = Int32.Parse((String)Session["UserID"]);
+
+                using (var context = new MyDbContext())
+                {
+                    var vistingTimesoftheweek = from s in context.Schedules
+                                                where s.userAccountRef == currentuserID
+
+                                                select s.visitingTime;
+
+
+
+                    return View("skema");
+                }
             }
         }
     }

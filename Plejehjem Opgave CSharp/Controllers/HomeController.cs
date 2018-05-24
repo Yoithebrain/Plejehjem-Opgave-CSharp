@@ -254,6 +254,9 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                     //returns the view you seek
                     using (MyDbContext Mydb = new MyDbContext())
                     {
+                        //Fills the model, as of now the model is being filled with everything since there is 
+                        //nothing chaining the data to the current user, this could easily be fixed
+                        //with some code that selected the user and then joined the other tables on to that user.
                         var model = (from cc in Mydb.CitizensContacts
                             join sche in Mydb.Schedules on cc.citizensRefId equals sche.citizensRefId
                             join fci in Mydb.FullCitizensInfos on cc.citizensRefId equals fci.citizensID
@@ -267,7 +270,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                                 rel_Relationship = cc.relationToCitizens,
                                 vis_Date = sche.visitingTime,
 
-                            }).ToList<ClientWork>();
+                            }).ToList<ClientWork>(); //Makes it to a generic list that can then be accessed by the view.
 
                         return View(model);
                     }

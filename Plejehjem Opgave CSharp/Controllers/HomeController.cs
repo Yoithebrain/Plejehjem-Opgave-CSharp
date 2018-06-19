@@ -11,18 +11,11 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 {
     public class HomeController : Controller
     {
-        private List<CitizensInformation> citizens;
-        private static List<CitizensToBeVisitedToday> finalList = new List<CitizensToBeVisitedToday>();
-
-
-        public HomeController()
-        {
-
-
-
-
-          
-        }
+    
+    
+        private  static  List<CitizensToBeVisitedToday> modelRuteplan = new List<CitizensToBeVisitedToday>();
+      
+      
 
 
 
@@ -42,24 +35,12 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         /// <returns>RutePlan view with a finalList model</returns>
 
         public ActionResult RutePlan()
-            {
+        {
 
             //since our original finalList is static, we need to basically set it to null
-                //that way we dont get the same information when we refresh /ruteplan
-                finalList = new List<CitizensToBeVisitedToday>();
-
-
-           MyDbContext db = new MyDbContext();
-                List<string> vistingTimes = new List<string>();
-                List<int> citizensIDToday = new List<int>();
-                List<string> citizensNamesToday = new List<string>();
-                List<string> citizensAddressToday = new List<string>();
-                List<string> CPRNumbersToday = new List<string>();
-
-                List<double> findLatitudeToday = new List<double>();
-                List<double> findLongtitudeToday = new List<double>();
-
-                
+            //that way we dont get the same information when we refresh /ruteplan
+          //  modelRuteplan = new List<CitizensToBeVisitedToday>();
+            
 
             //since sessions are static and global they can be accessed anywhere.
             if (Session["UserID"] == null)
@@ -71,170 +52,70 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
                 //gets the date today
                 var currentDate = DateTime.Now.Date;
-               
+
 
                 //currentUserID contains information about the ID of whom is logged into the system(which user account)
-                int currentUserID = Int32.Parse((string)Session["UserID"]);
+                int currentUserID = Int32.Parse((string) Session["UserID"]);
+
+                string dateFormatted = currentDate.ToString("dd/MM/yyyy");
 
 
                 using (var context = new MyDbContext())
                 {
-                  
 
-                    
-                    
-                    //If the currentuserID(the ID of whoever is logged in) is found in the database (useraccountref),
-                    //and the DateForVisiting(the date they need to visit) is equal to currentDate(today),
-                    //then select all the times(clock) for when the employee needs to be there.
-                    var vistingTimesToday = from s in context.Schedules
-                       where s.userAccountRef == currentUserID
-                      where s.DateForVisiting == currentDate
-                                                  
-                        select s.visitingTime;
-
-
-
-
-                    //gets the ID of the citizen to be visited today
-                    //Distinct removes any duplicates.
-                    var citizensToBeVisited = (from s in context.Schedules
-                        where s.userAccountRef == currentUserID
-                        where s.DateForVisiting == currentDate
-
-                        select  s.citizensRefId).Distinct();
-
-
-
-
-
-                    //THIS DATA IS WHAT WE NEED!!
-                    foreach (var data in vistingTimesToday)
-                    {
-                        vistingTimes.Add(data);
-                        
-                       
-                    }
 
                     //adds every citizen ID to a list
-                    foreach (var citizensIDData in citizensToBeVisited)
-                    {
-                        citizensIDToday.Add(citizensIDData);
-
-                        //gets the name that corrosponds to the ID
-                        var findCitizensNamesToday = from f in context.FullCitizensInfos
-                            where f.citizensID == citizensIDData
-                            select f.firstName;
-                        
-
-                        //there is always only loop through this once, since the outer loop gives ONE result each time
-                        //only need the loop to get the specific data
-                        foreach (var data2 in findCitizensNamesToday)
-                        {
-                            citizensNamesToday.Add(data2);
-                        }
-
-                        //gets all the addresses of the citizens today
-                        var findCitizensAddressToday = from f in context.FullCitizensInfos
-                            where f.citizensID == citizensIDData
-                            select f.address;
-
-                        foreach (var data3 in findCitizensAddressToday)
-                        {
-                            citizensAddressToday.Add(data3);
-                        }
-
-                        //gets the cprnumbers of the citizens that needs to be visitewd today..
-                        var findCPRNumberToday = from f in context.FullCitizensInfos
-                            where f.citizensID == citizensIDData
-                            select f.CPRNumber;
-
-
-                        foreach (var data4 in findCPRNumberToday)
-                        {
-                            CPRNumbersToday.Add(data4);
-                        }
-
-                        var findLatitude = from g in context.GoogleMapsInformations
-                            where g.citizensRefId == citizensIDData
-                            select g.Latitude;
-
-                        foreach (var data5 in findLatitude)
-                        {
-                            findLatitudeToday.Add(data5);
-                        }
-
-                        var findLongtitude = from g in context.GoogleMapsInformations
-                            where g.citizensRefId == citizensIDData
-                            select g.Longtitude;
-
-                        foreach (var data6 in findLongtitude)
-                        {
-                            findLongtitudeToday.Add(data6);
-                        }
-
-
-                    }
-
-       
-                }
-
-                //formats away the default clock timer and coverts Date to string
-                string dateFormat = currentDate.ToString("dd/MM/yyyy");
-
-
                 
 
-                for (int i = 0; i < vistingTimes.Count; i++)
-                {
-                    try
-                    {
-                        finalList.Add(new CitizensToBeVisitedToday
-                        {
-                            vistingTimesToday = vistingTimes[i],
-                            dateToday = dateFormat,
-                            CPRNumber = CPRNumbersToday[i],
-                            citizensName = citizensNamesToday[i],
-                            address = citizensAddressToday[i],
-                            latitude = findLatitudeToday[i],
-                            longtitude = findLongtitudeToday[i]
-                        });
-                    }
-                    //in case the user has no one to visit today
-                    catch (System.ArgumentOutOfRangeException)
-                    {
-                        finalList = null;
-                    }
-               
+                        modelRuteplan = (from f in context.FullCitizensInfos
+                            join g in context.GoogleMapsInformations on f.citizensID equals g.citizensRefId
+                            join s in context.Schedules on f.citizensID equals s.citizensRefId
+
+                            where s.userAccountRef == currentUserID
+                            where s.DateForVisiting == currentDate
+                            where f.citizensID == s.citizensRefId
+
+                            select new CitizensToBeVisitedToday()
+                            {
+                                vistingTimesToday = s.visitingTime,
+                                dateToday = dateFormatted,
+                                CPRNumber = f.CPRNumber,
+                                citizensName = f.firstName,
+                                address = f.address,
+                                latitude = g.Latitude,
+                                longtitude = g.Longtitude
+                            }
+
+                        ).ToList();
+
+
+                        //sets our array into an object, so we can pass it to the view via a model.
+
+
+                        //TODO: INSTEAD OF RETURNING CITIZENS, RETURN THE CURRENT USER. CHECK OUT LINK BELOW
+                        //https://www.c-sharpcorner.com/UploadFile/7d3362/pass-data-from-controller-to-view-in-Asp-Net-mvc/
+                        //TODO: What we need to do is pass the information of currentuser and datetime to our view.
+                        // return View(finalList);
+
+                    
                 }
-
-
-
-                if (finalList != null && finalList.Count > 0)
-                {
-                    return View(finalList);
-                }
-
-                return View("RuteplanNotAvailable");
-
-                //sets our array into an object, so we can pass it to the view via a model.
-            
-
-                //TODO: INSTEAD OF RETURNING CITIZENS, RETURN THE CURRENT USER. CHECK OUT LINK BELOW
-                //https://www.c-sharpcorner.com/UploadFile/7d3362/pass-data-from-controller-to-view-in-Asp-Net-mvc/
-                //TODO: What we need to do is pass the information of currentuser and datetime to our view.
-               // return View(finalList);
-
             }
+
+            if (modelRuteplan != null && modelRuteplan.Count > 0)
+            {
+                return View(modelRuteplan);
+            }
+
+            return View("RuteplanNotAvailable");
+
         }
 
 
         public JsonResult GetAllLocations()
         {
         
-
-
        // var data = context.GoogleMapsInformations.ToList();
-            return Json(finalList, JsonRequestBehavior.AllowGet);
+            return Json(modelRuteplan, JsonRequestBehavior.AllowGet);
 
          
         }

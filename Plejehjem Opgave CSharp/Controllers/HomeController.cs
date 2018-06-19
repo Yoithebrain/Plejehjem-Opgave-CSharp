@@ -12,17 +12,15 @@ namespace Plejehjem_Opgave_CSharp.Controllers
     public class HomeController : Controller
     {
     
-    
+    //if this wasn't static we wouldn't be able to see the marker on the map.
         private  static  List<CitizensToBeVisitedToday> modelRuteplan = new List<CitizensToBeVisitedToday>();
-      
-      
 
 
 
 
         /// <summary>
-        /// RutePlan() returns a view based on a model called "finalList".
-        /// This finalList is a list with an object that contains all needed information
+        /// RutePlan() returns a view based on a model called "modelRuteplan".
+        /// This modelRuteplan is a list with an object that contains all needed information
         /// It contains following:
         /// 1. vistingTimes: A way to see when the employee needs to be at a citizens
         /// 2. citizensIDToday The ID of the citizens we need to visit today
@@ -32,15 +30,10 @@ namespace Plejehjem_Opgave_CSharp.Controllers
         /// 6.findLatitudeToday finds the latitude based on the whereabouts of the citizens
         /// 7. findLongtitudeToday Same, but for longtitude
         /// </summary>
-        /// <returns>RutePlan view with a finalList model</returns>
+        /// <returns>RutePlan view with a modelRuteplan model</returns>
 
         public ActionResult RutePlan()
         {
-
-            //since our original finalList is static, we need to basically set it to null
-            //that way we dont get the same information when we refresh /ruteplan
-          //  modelRuteplan = new List<CitizensToBeVisitedToday>();
-            
 
             //since sessions are static and global they can be accessed anywhere.
             if (Session["UserID"] == null)
@@ -62,11 +55,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
                 using (var context = new MyDbContext())
                 {
-
-
-                    //adds every citizen ID to a list
-                
-
+   
                         modelRuteplan = (from f in context.FullCitizensInfos
                             join g in context.GoogleMapsInformations on f.citizensID equals g.citizensRefId
                             join s in context.Schedules on f.citizensID equals s.citizensRefId
@@ -88,20 +77,10 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
                         ).ToList();
 
-
-                        //sets our array into an object, so we can pass it to the view via a model.
-
-
-                        //TODO: INSTEAD OF RETURNING CITIZENS, RETURN THE CURRENT USER. CHECK OUT LINK BELOW
-                        //https://www.c-sharpcorner.com/UploadFile/7d3362/pass-data-from-controller-to-view-in-Asp-Net-mvc/
-                        //TODO: What we need to do is pass the information of currentuser and datetime to our view.
-                        // return View(finalList);
-
-                    
                 }
             }
 
-            if (modelRuteplan != null && modelRuteplan.Count > 0)
+            if (modelRuteplan.Count > 0)
             {
                 return View(modelRuteplan);
             }
@@ -110,7 +89,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
         }
 
-
+        //this method is required to show the markers on the map. See the view file.
         public JsonResult GetAllLocations()
         {
         

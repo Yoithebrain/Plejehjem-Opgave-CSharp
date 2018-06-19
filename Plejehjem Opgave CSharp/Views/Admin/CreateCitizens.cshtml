@@ -142,8 +142,10 @@
 
 
     function geoCode(address, latOrLong) {
+
         console.log("FUINCTIN START");
         var location = address;
+
         //http request using axios
         axios.get('https://maps.googleapis.com/maps/api/geocode/json',
             {
@@ -152,18 +154,6 @@
                     key: 'AIzaSyCj7HEZcGIUWHwc6wb3_ZyJ5fN23VxqW0Q'
                 }
             }).then(function (response) {
-                ////log full response
-                //console.log(response);
-
-                ////log formatted adress
-                //formattedAdress = response.data.results[0].formatted_address;
-                //console.log(response.data.results[0].formatted_address);
-
-                //// latitude
-                //console.log(response.data.results[0].geometry.location.lat);
-
-                ////longtitude
-                //console.log(response.data.results[0].geometry.location.lng);
 
                 if (latOrLong === "lat") {
                     latitude = response.data.results[0].geometry.location.lat;
@@ -190,9 +180,6 @@
     }
 
 
-
-
-
     function ajaxCall() {
         $.ajax({
             type: "GET",
@@ -205,8 +192,6 @@
 
 
             }
-
-
         });
 
         return false;
@@ -218,6 +203,7 @@
 
 
         var promiseAjaxCall = new Promise(function (resolve, reject) {
+
             addressValue = $(".addressClass").val();
 
             geoCode(addressValue, "lat");
@@ -240,12 +226,14 @@
         console.log("Form inside");
 
         promiseAjaxCall.then(function () {
+
             console.log("Right before ajaxCall");
             ajaxCall();
             console.log("Right after ajaxcall");
             $("#hiddenDiv").html("Dine ændringer er husket!");
             $("#hiddenDivWarning").html("**NOTE**: Husk at trykke 'Create' for at gemme til databasen!");
             $("#createButton").css("display", "inline");
+
         }).catch(function () {
             event.preventDefault();
             console.log("rejected");
@@ -255,51 +243,5 @@
 
     });
 
-
-    //$("#createButton").click(function () {
-    //   //gets the input from the inputbox "address"
-    //   addressValue = $(".addressClass").val();
-
-    //    geoCode(addressValue, "lat");
-    //   geoCode(addressValue, "long");
-
-    //   //geoCode(addressValue); //min ajax bliver kaldt før geocode??
-
-    //   // setTimeout(ajaxCall, 750);
-
-
-
-    //});
-
-    //function getCoordinates(form) {
-    //    //gets the input from the inputbox "address"
-    //    console.log("JBIAEJDFIASDKFasdfoansdfoijadsofijasdofijasdoifjaosidjfasdifojasodifjaodfjaodif");
-    //    addressValue = $(".addressClass").val();
-
-    //    geoCode(addressValue, "lat");
-    //    geoCode(addressValue, "long");
-
-    //    //geoCode(addressValue); //min ajax bliver kaldt før geocode??
-
-    //    setTimeout(ajaxCall, 1000);
-    //    //ajaxCall();
-    //    setTimeout(function() {
-    //            form.submit();
-    //        },
-    //        3000);
-
-    //    return false;
-    //}
-
-    //function waitForm(form) {
-
-    //    document.getElementById("createButton").value = "loading";
-    //    setTimeout(function() {
-    //            form.submit();
-    //        },
-    //        10000);
-
-    //    return false;
-    //}
 
 </script>

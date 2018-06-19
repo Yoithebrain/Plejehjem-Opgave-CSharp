@@ -54,12 +54,7 @@ namespace Plejehjem_Opgave_CSharp.Controllers
 
             }
 
-            //wait 1500 ms.
-            System.Threading.Timer timer = null;
-            timer = new System.Threading.Timer((obj) =>
-                {
-
-
+        
 
                     //insert data to googleinformation database
                     using (MyDbContext db2 = new MyDbContext())
@@ -74,8 +69,6 @@ namespace Plejehjem_Opgave_CSharp.Controllers
                     }
                     ModelState.Clear();
 
-                },
-                null, 3000, System.Threading.Timeout.Infinite);
 
             return View();
 
@@ -177,12 +170,6 @@ this.ViewData["Citizens"] = new SelectList(databaseFullName, "Value", "Text");
             return View();
 
         }
-
-
-
-
-
-
 
 
 
